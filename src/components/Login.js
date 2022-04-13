@@ -1,8 +1,11 @@
 import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -38,6 +41,8 @@ const Login = () => {
 
         const token = res.data.token;
         localStorage.setItem("token", token);
+
+        navigate("/listado");
       });
   };
 
