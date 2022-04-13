@@ -33,7 +33,12 @@ const Login = () => {
         email,
         password,
       })
-      .then((res) => Swal.fire("Ingresaste correctamente!"));
+      .then((res) => {
+        Swal.fire("Ingresaste correctamente!");
+
+        const token = res.data.token;
+        localStorage.setItem("token", token);
+      });
   };
 
   return (
