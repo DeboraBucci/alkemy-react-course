@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const submitHandler = (e) => {
@@ -12,16 +13,17 @@ const Login = () => {
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (email === "" || password === "") {
-      console.log("Los campos no deben estar vacíos.");
+      Swal.fire("Los campos no deben estar vacíos.");
       return;
     }
 
     if (email !== "" && !regexEmail.test(email)) {
-      console.log("El formato del correo electrónico es inválido.");
+      Swal.fire("El formato del correo electrónico no es válido.");
+      return;
     }
 
     if (email !== "challenge@alkemy.org" || password !== "react") {
-      console.log("Credenciales inválidas.");
+      Swal.fire("Credenciales inválidas.");
       return;
     }
 
@@ -31,7 +33,7 @@ const Login = () => {
         email,
         password,
       })
-      .then((res) => console.log(res));
+      .then((res) => Swal.fire("Ingresaste correctamente!"));
   };
 
   return (
