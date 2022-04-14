@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Buscador from "./Buscador";
 
 const Header = () => {
   return (
@@ -16,6 +17,8 @@ const Header = () => {
             <Link to="/contacto">Contacto</Link>
           </li>
         </ul>
+
+        <Buscador />
       </nav>
     </header>
   );
