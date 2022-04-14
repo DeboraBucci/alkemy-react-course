@@ -8,18 +8,17 @@ const Detalles = () => {
   const query = new URLSearchParams(window.location.search);
   const movieID = query.get("movieID");
   const apiKey = "8dd249658a5c2a41a4340dbc40d4cfd5";
-  const language = "es-ESS";
+  const language = "es-ES";
   const endPoint = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${apiKey}&language=${language}`;
 
   const [movie, setMovie] = useState(null);
-  console.log(window.location.search);
 
   useEffect(() => {
     axios
       .get(endPoint)
       .then((response) => {
-        const movideData = response.data;
-        setMovie(movideData);
+        const movieData = response.data;
+        setMovie(movieData);
       })
       .catch((err) => {
         Swal.fire("Algo salió mal. Por favor, intente más tarde.");
@@ -50,7 +49,7 @@ const Detalles = () => {
             <h5>Géneros:</h5>
             <ul>
               {movie.genres.map(({ name }) => (
-                <li>{name}</li>
+                <li key={name}>{name}</li>
               ))}
             </ul>
           </div>
