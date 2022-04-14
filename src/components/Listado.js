@@ -4,7 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const Listado = () => {
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const apiKey = "8dd249658a5c2a41a4340dbc40d4cfd5";
   const language = "es-ESS";
   const endPoint = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=${language}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;

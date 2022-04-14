@@ -5,7 +5,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
+  // sessionStorage is the same as localStorage, but it is cleared out when you close the window
+  const token = sessionStorage.getItem("token");
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -41,7 +42,7 @@ const Login = () => {
         Swal.fire("Ingresaste correctamente!");
 
         const token = res.data.token;
-        localStorage.setItem("token", token);
+        sessionStorage.setItem("token", token);
 
         navigate("/listado");
       });
