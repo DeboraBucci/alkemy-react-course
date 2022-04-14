@@ -1,10 +1,11 @@
 import React from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -48,6 +49,8 @@ const Login = () => {
 
   return (
     <React.Fragment>
+      {token && <Navigate to="/listado" />}
+
       <h2>Formulario de login</h2>
       <form onSubmit={submitHandler}>
         <label htmlFor="email">Correo electrónico:</label>
