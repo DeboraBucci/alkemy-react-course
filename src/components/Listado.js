@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 
 const Listado = () => {
   const token = localStorage.getItem("token");
+  const apiKey = "8dd249658a5c2a41a4340dbc40d4cfd5";
+  const language = "es-ESS";
+  const endPoint = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=${language}&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`;
+
+  const [moviesList, setMoviesList] = useState([]);
+
+  useEffect(() => {
+    axios.get(endPoint).then((response) => {
+      const apiData = response.data.results;
+      setMoviesList(apiData);
+    });
+  }, [endPoint]);
 
   return (
     <React.Fragment>
