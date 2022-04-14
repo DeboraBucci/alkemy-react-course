@@ -13,10 +13,12 @@ function App() {
     <React.Fragment>
       <Header />
 
-      <Routes>
-        <Route exact path="/" element={<Login />} />
-        <Route path="/listado" element={<Listado />} />
-      </Routes>
+      <div className="container mt-3">
+        <Routes>
+          <Route exact path="/" element={<Login />} />
+          <Route path="/listado" element={<Listado />} />
+        </Routes>
+      </div>
 
       <Footer />
     </React.Fragment>
