@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Listado = () => {
   const token = localStorage.getItem("token");
@@ -11,10 +12,15 @@ const Listado = () => {
   const [moviesList, setMoviesList] = useState([]);
 
   useEffect(() => {
-    axios.get(endPoint).then((response) => {
-      const apiData = response.data.results;
-      setMoviesList(apiData);
-    });
+    axios
+      .get(endPoint)
+      .then((response) => {
+        const apiData = response.data.results;
+        setMoviesList(apiData);
+      })
+      .catch((err) => {
+        Swal.fire("Algo salió mal. Por favor, intente más tarde.");
+      });
   }, [endPoint]);
 
   return (
