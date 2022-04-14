@@ -6,6 +6,8 @@ import Listado from "./components/Listado";
 import Login from "./components/Login";
 import Footer from "./components/Footer";
 
+import "./css/bootstrap.min.css";
+
 function App() {
   return (
     <React.Fragment>
