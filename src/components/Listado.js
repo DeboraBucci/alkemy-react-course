@@ -41,7 +41,7 @@ const Listado = () => {
                   <h5 className="card-title">{movie.title}</h5>
                   <p className="card-text">{movie.overview.slice(0, 100)}...</p>
                   <Link to="/" className="btn btn-primary">
-                    See details
+                    Show details
                   </Link>
                 </div>
               </div>
