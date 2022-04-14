@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Buscador = () => {
+  const navigate = useNavigate();
+
   const submitHandler = (e) => {
     e.preventDefault();
 
@@ -10,7 +13,11 @@ const Buscador = () => {
       Swal.fire(
         "El input no debe estar vacío para poder realizar la búsqueda."
       );
+      return;
     }
+
+    e.currentTarget.search.value = "";
+    navigate(`/resultados?text=${text}`);
   };
 
   return (

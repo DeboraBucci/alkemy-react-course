@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 
 import "./css/bootstrap.min.css";
 import Detalles from "./components/Detalles";
+import Resultados from "./components/Resultados";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/" element={<Login />} />
           <Route path="/listado" element={<Listado />} />
           <Route path="/detalles" element={<Detalles />} />
+          <Route path="/resultados" element={<Resultados />} />
         </Routes>
       </div>
 
