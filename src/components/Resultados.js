@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
-const Resultados = () => {
+const Resultados = ({ toggleFavs }) => {
   const query = new URLSearchParams(window.location.search);
   const text = query.get("text");
   const apiKey = "8dd249658a5c2a41a4340dbc40d4cfd5";
@@ -22,7 +22,7 @@ const Resultados = () => {
       .catch((err) => {
         Swal.fire("Algo salió mal. Por favor, intente más tarde.");
       });
-  }, [endPoint, query]);
+  }, [endPoint]);
 
   return (
     <React.Fragment>
@@ -39,6 +39,14 @@ const Resultados = () => {
                   className="card-img-top"
                   alt="..."
                 />
+                <button
+                  className="favourte-btn"
+                  onClick={toggleFavs}
+                  data-movie-id={movie.id}
+                >
+                  <i className="fa-regular fa-heart heart"></i>
+                </button>
+
                 <div className="card-body">
                   <h5 className="card-title">{movie.title}</h5>
                   <p className="card-text">{movie.overview.slice(0, 100)}...</p>

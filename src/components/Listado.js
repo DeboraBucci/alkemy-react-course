@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const Listado = () => {
+const Listado = ({ toggleFavs }) => {
   const token = sessionStorage.getItem("token");
   const apiKey = "8dd249658a5c2a41a4340dbc40d4cfd5";
   const language = "es-ESS";
@@ -37,6 +37,14 @@ const Listado = () => {
                   className="card-img-top"
                   alt="..."
                 />
+                <button
+                  className="favourte-btn"
+                  onClick={toggleFavs}
+                  data-movie-id={movie.id}
+                >
+                  <i className="fa-regular fa-heart heart"></i>
+                </button>
+
                 <div className="card-body">
                   <h5 className="card-title">{movie.title}</h5>
                   <p className="card-text">{movie.overview.slice(0, 100)}...</p>
